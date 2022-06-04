@@ -1,62 +1,30 @@
 # The Shortcutter's Coding Challenge
 
-![This is an image](./shortcut.jpg)
-
-Hi :wave:
-
-This document describes the challenge for those interested in working with us. As you may have guessed, it revolves around the backend and frontend. :tada:
 
 ## URL Shortener
-Develop a service that lets users create short URLs (like Bitly, Rebrandly, etc.) for their original links.
+Developed a service that lets users create short URLs (like Bitly, Rebrandly, etc.) for their original links. This service let any user use shortened URLs by clicking on it (redirects to original URLs) and user can see all the created short URLs.
 
-Consider this as an MVP that is ready for deployment, but try to keep in mind future maintenance and improvements.
-Don't spend too much time on perfecting it, as long as you can discuss the choices you made, what parts could be improved, etc.
+## Tech Stack
+React
+Node.js
+Express
+MongoDB
 
-## Functional requirements
+## Prerequisites 
+Make sure you have the LTS version of Node installed.
+Install git for version control.
+Install MongoDB.
 
-- Service should have an API and a web part.
-- API should let any user create shortened URLs.
-- API should let any user use shortened URLs (e.g., follow redirects to original URLs).
-- API should should have endpoint to fetch created shortened URLs.
-- Create a web page where users can see created URLs.
+## Deployment
+Step 1: Clone this repo.
+Step 2: cd shorturlclient
+Step 4: While in the shorturlclient directory, install the frontend dependencies using npm install.
+Step 5: cd shorturlserver
+Step 6: While in the server directory, install the backend dependencies using npm install.
+Step 7: connect MongoDB with project using following steps:
+       Login mongoDB account->Create a project-> Build database->Create cluster->Create user with user name and password-> Add your IP address to access list 
+       Go to database-> connect->connect your application->copy the connection string and paste it to by creating an .env file inside shorturlserver directory(add URL= before connection string and replace password with original)
+Step 8: Inside the server directory(shorturlserver), run the backend server using node server.js or using nodemon run server.js. The backend server will start on localhost:5000.
+Step 9: While backend server is still running, open a new tab on the terminal and cd to the client project directory i.e. shorturlclient.
+Step 10: Finally start the react app using npm start. The app will start on port 3000 which can be accessed through http://localhost:3000/.
 
-## Technical requirements
-
-- Service has to serve requests over HTTP API.
-- You can use any frontend framework, but keep in mind about building and bundling scripts.
-- You can use any tech solution for storing data but consider that your project has to be easy to launch. For example, if you use any DB consider including deploy scripts or containerization scripts.
-- The same rule for dependencies and other libraries, consider including deploy or containerization scripts as other people might not have them.
-
-## The README
-
-Please include README file to your project. Hopefully it will contain following information:
-
-- Start from the task and solution description.
-- Include instructions how to run or deploy your solution.
-- Describe your technical choices and architecture.
-- Add details about trade-offs you have made
-- Add details about things and features you have skipped, or you would like to change if you have additional time for this project.
-
-## The Review
-
-During the review process we'll look at:
-
-- We've been able to run your project.
-- Your VCS history, with hopefully more than 1 commit
-- The project structure.
-- The code architecture.
-- Unit & integration tests.
-- Good coding practices.
-- Consistent coding style and formatting
-- Names and naming conventions.
-- Good use of comments.
-- Lint warnings and code smells.
-
-## The End
-
-We don't like goodbyes, so why not stay in touch? Follow us on LinkedIn
-[:norway:](https://no.linkedin.com/company/shortcut-as)
-[:denmark:](https://www.linkedin.com/company/shortcut-global/)
-[:romania:](https://www.linkedin.com/company/shortcut-bucharest/)
-[:sweden:](https://www.linkedin.com/company/shortcut-sweden)
-We also appreciate any feedback you may have regarding this coding assignment, good or bad. Send an email to [post@shortcut.no](mailto:post@shortcut.no) and let us know how we're doing!

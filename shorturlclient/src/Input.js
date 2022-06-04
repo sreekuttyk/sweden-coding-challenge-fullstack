@@ -29,10 +29,10 @@ function Input() {
 
     setInput(" ");
   };
-  const handleDelete = event =>{
-    const remainingItem = allUrl.filter( (i,index) => ++index != event )
-    setAlUrl(remainingItem)
-}
+  const handleDelete = (event) => {
+    const remainingItem = allUrl.filter((i, index) => ++index !== event);
+    setAlUrl(remainingItem);
+  };
 
   return (
     <div className="container parent-container">
@@ -74,7 +74,7 @@ function Input() {
                   href={`http://localhost:5000/${item.uniq}`}
                   target="_blank"
                   className="text-whilte"
-                  style={{ color: "#fff" }}
+                  style={{ color: "#fff" }} rel="noreferrer"
                 >{`http://${item.uniq}`}</a>
               </td>
 
@@ -83,7 +83,12 @@ function Input() {
                   <span className="mx-3">
                     <CopyText text={`http://localhost:5000/${item.uniq}`} />
                   </span>
-                  <span className='btn btn-danger' onClick={ () => handleDelete(index) }>Delete</span>
+                  <span
+                    className="btn btn-danger"
+                    onClick={() => handleDelete(index)}
+                  >
+                    Delete
+                  </span>
                 </td>
               </td>
             </tr>
