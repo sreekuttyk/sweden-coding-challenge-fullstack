@@ -1,10 +1,59 @@
-const express = require('express')
-const app = express()
+const { MongoClient } = require("mongodb");
+const express = require("express");
+const app = express();
+const cors = require("cors");
 const port = process.env.PORT || 5000;
-app.get('/', (req, res) => {
-    res.send('Server  Running')
-})
+require("dotenv").config();
+app.use(cors());
+app.use(express.json());
+const uri = process.env.URL;
+const client = new MongoClient(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+async function run() {
+  try {
+    await client.connect();
+    const database = client.db("shortUrl");
+    const shortUrl = database.collection("shortUrl");
+  
+    app.post("/urllist", async (req, res) => {
+        
+      const url = req.body;
+     
+      const result = await shortUrl.insertOne(url);
+      res.json(result);
+    });
+
+   
+    app.get("/urllist", async (req, res) => {
+      let result = await shortUrl.find({}).toArray();
+     
+      res.json(result);
+    });
+
+    app.get("/:uniq", async (req, res) => {
+      let uniq = req.params.uniq;
+     
+      const query = { uniq: uniq };
+    
+      const result = await shortUrl.findOne(query);
+     
+      
+      if (result?.uniq) {
+        res.redirect(result.url);
+      }
+    });
+  } finally {
+    // await client.close();
+  }
+}
+run().catch(console.dir);
+
+app.get("/", (req, res) => {
+  res.send("Server Running");
+});
 
 app.listen(port, () => {
-    console.log(`${port} Port is running`)
-})
+  console.log(`${port} Port is running`);
+});
