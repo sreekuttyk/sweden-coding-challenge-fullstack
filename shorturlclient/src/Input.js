@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import CopyText from './CopyText';
 
 const tinyid = require("tiny-unique-id");
+
 
 function Input() {
   const [input, setInput] = useState("");
@@ -19,12 +21,9 @@ function Input() {
       body: JSON.stringify({ url: input, uniq: slug }),
     })
       .then((req) => req.json())
-    
+
       .then((data) => {
-          
-          
         if (data.insertedId) {
-            
           setAlUrl([...allUrl, { url: input, uniq: slug }]);
         }
       });
@@ -76,7 +75,13 @@ function Input() {
                 >{`${item.uniq}`}</a>
               </td>
 
-              <td className="d-flex justify-content-center align-item-center"></td>
+              <td className="d-flex justify-content-center align-item-center">
+                <td className="d-flex justify-content-center align-item-center">
+                  <span className="mx-3">
+                    <CopyText text={`http://localhost:5000/${item.uniq}`} />
+                  </span>
+                </td>
+              </td>
             </tr>
           ))}
         </tbody>
