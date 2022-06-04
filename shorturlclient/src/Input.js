@@ -1,8 +1,7 @@
 import React, { useState } from "react";
-import CopyText from './CopyText';
+import CopyText from "./CopyText";
 
 const tinyid = require("tiny-unique-id");
-
 
 function Input() {
   const [input, setInput] = useState("");
@@ -30,6 +29,10 @@ function Input() {
 
     setInput(" ");
   };
+  const handleDelete = event =>{
+    const remainingItem = allUrl.filter( (i,index) => ++index != event )
+    setAlUrl(remainingItem)
+}
 
   return (
     <div className="container parent-container">
@@ -72,7 +75,7 @@ function Input() {
                   target="_blank"
                   className="text-whilte"
                   style={{ color: "#fff" }}
-                >{`${item.uniq}`}</a>
+                >{`http://${item.uniq}`}</a>
               </td>
 
               <td className="d-flex justify-content-center align-item-center">
@@ -80,6 +83,7 @@ function Input() {
                   <span className="mx-3">
                     <CopyText text={`http://localhost:5000/${item.uniq}`} />
                   </span>
+                  <span className='btn btn-danger' onClick={ () => handleDelete(index) }>Delete</span>
                 </td>
               </td>
             </tr>
