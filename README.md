@@ -16,7 +16,7 @@ MongoDB
 ## Prerequisites 
 Make sure you have the LTS version of Node installed.\
 Install git for version control.\
-Install MongoDB.
+
 
 ## Deployment
 Step 1: Clone this repo.\
@@ -24,7 +24,7 @@ Step 2: cd shorturlclient\
 Step 3: While in the shorturlclient directory, install the frontend dependencies using npm install.\
 Step 4: cd shorturlserver\
 Step 5: While in the server directory, install the backend dependencies using npm install.\
-Step 6: connect MongoDB with project by creating .env file inside shorturlserver folder using following steps:\
+Step 6: connect MongoDB Atlas(cloud) with project by creating .env file inside shorturlserver folder using following steps:\
        Login mongoDB account->Create a project-> Build database->Create cluster->Create user with user name and password-> Add your IP address to access list \
        Go to database-> connect->connect your application->copy the connection string and paste it to by creating an .env file inside shorturlserver directory(add URL= before connection string and replace password with original)\
 Step 7: Inside the server directory(shorturlserver), run the backend server using node server.js or using nodemon run server.js. The backend server will start on localhost:5000.\
